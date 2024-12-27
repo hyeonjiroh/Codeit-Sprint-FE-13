@@ -1,0 +1,89 @@
+* {
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 16px;
+    margin: 0;
+  }
+  
+  .main-logo {
+    /*nav(inline)가 아래로 내려갈 수 있게 margin-right 100%로 지정*/
+    margin: 68px 100% 0px 48px;
+    width: 104px;
+  }
+  
+  nav {
+    margin: 24px 48px;
+    font-size: 22px;
+    font-weight: 700;
+    color: #000000;
+    display: inline-block;
+  }
+  
+  .nav-list {
+    /*inline element라 margin이 좌우만 적용됨*/
+    margin: 8px;
+  }
+  
+  header {
+    border-top: 3px solid gray;
+  }
+  
+  .title {
+    margin: 40px 48px 8px;
+    font-size: 24px;
+    font-weight: 700;
+    color: #000000;
+  }
+  
+  .date {
+    margin: 8px 48px 24px;
+  }
+  
+  .artwork-list {
+    overflow: scroll;
+    white-space: nowrap;
+    margin: 24px 0;
+  }
+
+  .artwork-list::-webkit-scrollbar {
+    display: none;
+}
+  
+  .artwork {
+    height: 194px;
+    margin-right: 8px;
+  }
+  
+  .all-button {
+    display: inline-block;
+    padding: 12px 24px;
+    margin: 0 48px;
+    background-color: #000000;
+    font-size: 16px;
+    color: #ffffff;
+    text-decoration: none;
+  }
+  
+  article {
+    margin: 72px 48px;
+  }
+  
+  .article-title {
+    font-size: 24px;
+    font-weight: 700;
+    color: #000000;
+  }
+  
+  .article-text {
+    margin: 16px 0;
+    font-size: 16px;
+    color: #000000;
+  }
+  
+  .article-image {
+    width: 100%;
+    margin: 24px 0;
+  }

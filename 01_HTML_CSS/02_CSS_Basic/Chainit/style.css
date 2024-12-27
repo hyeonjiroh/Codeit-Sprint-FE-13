@@ -1,0 +1,141 @@
+* {
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: Poppins, 'Noto Sans KR', sans-serif;
+    margin: 0;
+  }
+
+  p {
+    margin: 0;
+  }
+
+ .content {
+    width: 720px;
+    margin: 0 auto;
+  }
+
+  header {
+    background-image: url("bg.png");
+    background-size: cover;
+    padding-top: 12px;
+  }
+
+  a.main{
+    text-decoration: none;
+    color: #ffffff;
+    font-size: 20px;
+    font-weight: 400;
+    margin: 0 40px;
+  }
+
+  a.main > span.bold {
+    font-weight: 700;
+  }
+
+  .content.slogan {
+   margin: 80px auto 12px;
+   font-size: 20px;
+   font-weight: 500;
+   color: #8287a4;
+  }
+
+  .content.emphasis{
+    font-size: 56px;
+    font-weight: 700;
+    color: #ffffff;
+  }
+
+  .content.description {
+    margin: 14px auto;
+    padding-bottom: 280px;
+    font-size: 14px;
+    font-weight: 400;
+    color: #8287a4;
+   }
+
+   section.content {
+    padding-bottom: 64px;
+   }
+
+   section.content > .title {
+    padding-top: 74px;
+    margin-bottom: 42px;
+    font-size: 36px;
+    font-weight: 700;
+    color: #161346;
+   }
+
+   section.content > img {
+    width: 100%;
+    border-radius: 24px;
+   }
+
+   section.content > p {
+    padding: 32px 0;
+    font-size: 16px;
+    font-weight: 500;
+    color: #4c497b;
+   }
+
+   div.button {
+    text-align: center;
+    margin: 16px auto;
+   }
+
+   section.content a {
+    text-decoration: none;
+    background-color: #413c91;
+    padding: 16px 32px;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 700;
+    color: #ffffff;
+    text-align: center;
+   }
+
+   .back-color {
+    background-color: #f1f4fa;
+   }
+
+   footer {
+    background-color: #161346;
+  }
+
+  footer > .content {
+    font-size: 16px;
+    font-weight: 400;
+    color: #8287a4;
+    text-align: center;
+   }
+
+   .career > .title {
+    font-size: 32px;
+    font-weight: 500;
+    color: #ffffff;
+    margin: 8px;
+  }
+
+  .career {
+    padding: 40px 0;
+  }
+
+   footer a {
+    text-decoration: none;
+    background-color: #413c91;
+    padding: 16px 32px;
+    border-radius: 9999px;
+    font-size: 16px;
+    font-weight: 700;
+    color: #ffffff;
+   }
+
+   .career > p {
+    padding-bottom: 32px;
+   }
+
+   footer > .content > p {
+    text-align: left;
+    padding: 32px;
+   }

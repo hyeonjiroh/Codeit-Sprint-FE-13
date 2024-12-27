@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Codeit Airline</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&family=Titillium+Web:wght@300;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <!-- 헤더 -->
+    <header>
+        <div class="main-page">
+            <a href="#">
+                <img src="logo.png" id="logo" alt="logo">
+                <span class="name"><span class="bold">Codeit</span>Airline</span>
+            </a>
+        </div>
+    </header>
+
+    <!-- 본문 -->
+    <main>
+        <!-- 출국(출발지-도착지) -->
+        <article class="departure">
+            <img src="depart.png" height="12">
+            <span>출국</span>
+            <div class="nation">ICN → YYZ</div>
+            <div class="date">일요일, 4월 20일, 2025</div>
+            <div class="description">
+                왕복여행 가격은 수수료와 세금이 포함된 가격입니다.
+                추가 수하물이 있을 경우 수수료가 추가로 적용됩니다.
+                서비스 및 편의시설은 적혀있는 내용과 달라질 수 있습니다.
+            </div>
+        </article>
+        <div class="line"><hr></div>
+        <!-- 티켓 종류 리스트 -->
+        <article class="ticket-list">
+            <!-- 티켓 1 -->
+            <article class="ticket">
+                <div class="ticket-number">AIR TICKET 01</div>
+                <div class="description">
+                    출발 / 도착
+                    <div class="time">
+                        오후 12:30
+                        <img src="airplane.svg" width="18">
+                        오후 8:29
+                    </div>
+                    운행 항공편
+                    <div class="flight">CL117, CL2402, CL8078</div>
+                    <ul>
+                        <li class="seat">좌석</li>
+                        <li class="amenities">편의시설</li>
+                        <li class="reservation">예약하기</li>
+                    </ul>
+                </div>
+            </article>
+            <!-- 티켓 2 -->
+            <article class="ticket">
+                <div class="ticket-number">AIR TICKET 02</div>
+                <div class="description">
+                    출발 / 도착
+                    <div class="time">
+                        오후 1:12
+                        <img src="airplane.svg" width="18">
+                        오후 9:02
+                    </div>
+                    운행 항공편
+                    <div class="flight">CL117, CL2402, CL8078</div>
+                    <ul>
+                        <li class="seat">좌석</li>
+                        <li class="amenities">편의시설</li>
+                        <li class="reservation">예약하기</li>
+                    </ul>                
+            </article>
+            <!-- 티켓 3 -->
+            <article class="ticket">
+                <div class="ticket-number">AIR TICKET 03</div>
+                <div class="description">
+                    출발 / 도착
+                    <div class="time">
+                        오후 03:10
+                        <img src="airplane.svg" width="18">
+                        오후 12:45
+                    </div>
+                    운행 항공편
+                    <div class="flight">CL1278, CL592, CL2156</div>
+                    <ul>
+                        <li class="seat">좌석</li>
+                        <li class="amenities">편의시설</li>
+                        <li class="reservation" id="sold-out">매진</li>
+                    </ul>                
+            </article>
+        </article>
+    </main>
+  </body>
+</html>

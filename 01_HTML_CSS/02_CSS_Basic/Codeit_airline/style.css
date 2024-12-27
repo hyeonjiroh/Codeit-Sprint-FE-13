@@ -1,0 +1,144 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+  
+  body {
+    font-family: 'Noto Sans KR', sans-serif;
+    background-color: #f8f8f8;
+  }
+
+  a {
+    text-decoration: none;
+  }
+  
+  header {
+    background-color: #11172b;
+    padding: 12px;
+  }
+
+  header .main-page {
+    width: 640px;
+    margin: auto;
+  }
+
+  #logo {
+    height: 24px;
+  }
+
+  header a {
+    color: #ffffff;
+    font-size: 24px;
+    font-weight: 300;
+    font-family: 'Titillium Web';
+  }
+
+  header span {
+        margin: 8px;
+  }
+
+  header .bold {
+    font-weight: 600;
+  }
+
+  main {
+    width: 640px;
+    margin: auto;
+  }
+
+  main .departure {
+    padding: 24px 32px;
+    margin: 40px auto 20px;
+    background-color: #ebeff8;
+    border-radius: 8px;
+    color: #b3bdd5;
+    font-size: 16px;
+  }
+
+  .departure > img {
+    margin-right: 10px;
+  }
+
+  .departure .nation {
+    font-size: 32px;
+    font-family: 'Titillium Web';
+    color: #000000;
+    font-weight: 900;
+    margin: 8px auto 24px;
+  }
+
+  .departure .date {
+    display: inline-block;
+    background-color: #ffffff;
+    padding: 8px 24px;
+    border-radius: 4px;
+    color: #000000;
+  }
+
+  .departure .description {
+    margin-top: 16px;
+    font-size: 12px;
+  }
+
+  main hr {
+    border-style: dashed;
+    border-color: #b6bfd3;
+  }
+
+  main .ticket {
+    background-color: #ffffff;
+    border-radius: 8px;
+    margin: 20px;
+  }
+
+  main .ticket-number {
+    font-size: 12px;
+    font-weight: 700;
+    font-family: 'Titilllium Web';
+    color: #16bf97;
+    padding: 8px 24px;
+    border-bottom: 1px solid #16bf97;
+  }
+
+  main .ticket .description {
+    padding: 26px 24px 24px;
+    font-size: 12px;
+    font-weight: 500;
+    color: #b3bdd5;
+  }
+
+  .ticket .description .time {
+    font-size: 16px;
+    font-weight: 700;
+    color: #1a345e;
+    margin: 4px auto;
+  }
+
+  .ticket .description .time > img {
+    margin: 0 10px;
+  }
+
+  .ticket .description .flight {
+    font-size: 16px;
+    color: #0b1f66;
+    margin: 4px auto;
+  }
+
+  .ticket .description > ul {
+    text-align: right;
+  }
+
+  .ticket .description > ul > li {
+    display: inline-block;
+    margin-left: 24px;
+    font-size: 14px;
+    font-weight: 500;
+    color: #1a345e;
+  }
+
+  #sold-out {
+    font-size: 14px;
+    font-weight: 500;
+    color: #dce0e8;
+  }
