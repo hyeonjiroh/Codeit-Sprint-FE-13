@@ -10,4 +10,3 @@ function HandButton({ value, onClick }) {
   }
   
   export default HandButton;
-  
