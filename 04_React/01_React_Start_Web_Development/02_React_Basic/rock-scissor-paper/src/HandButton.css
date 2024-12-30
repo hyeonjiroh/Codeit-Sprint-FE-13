@@ -12,10 +12,11 @@
     background-size: contain;
   }
   
-  .HandButton .HandButton-icon {
+  .HandButton-icon {
     opacity: 0.45;
     width: 55px;
     height: 55px;
+    margin: 0px auto 0;
   }
   
   .HandButton:hover {
