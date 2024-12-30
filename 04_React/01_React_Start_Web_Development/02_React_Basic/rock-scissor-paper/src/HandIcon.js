@@ -8,10 +8,9 @@ const IMAGES = {
   paper: paperImg,
 };
 
-function HandIcon({ value, className='' }) {
+function HandIcon({ className, value }) {
   const src = IMAGES[value];
-  const classNames = `${className}`;
-  return <img className={classNames} src={src} alt={value} />;
+  return <img className={className} src={src} alt={value} />;
 }
 
 export default HandIcon;
