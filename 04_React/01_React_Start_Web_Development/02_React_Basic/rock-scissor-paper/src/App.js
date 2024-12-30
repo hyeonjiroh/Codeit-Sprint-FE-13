@@ -50,7 +50,6 @@ function App() {
     setBet(num);
   };
   
-
   return (
     <div>
       <Button onClick={handleClearClick}>처음부터</Button>
