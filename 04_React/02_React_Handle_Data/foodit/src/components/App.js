@@ -1,5 +1,5 @@
-import FoodList from '../FoodList';
-import items from '../mock.json';
+import FoodList from "./FoodList";
+import items from "../mock.json";
 
 function App() {
   return (
