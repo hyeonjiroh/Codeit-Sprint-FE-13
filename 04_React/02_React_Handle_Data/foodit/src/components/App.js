@@ -7,7 +7,9 @@ function App() {
   const [items, setItems] = useState(mockItems);
 
   const handleNewestClick = () => setOrder("createdAt");
+
   const handleCalorieClick = () => setOrder("calorie");
+
   const handleDelete = (id) => {
     const nextItems = items.filter((item) => item.id !== id);
     setItems(nextItems);
