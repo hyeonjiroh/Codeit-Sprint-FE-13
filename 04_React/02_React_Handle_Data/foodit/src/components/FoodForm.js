@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { createFood } from "../api";
 import FileInput from "./FileInput";
 
 function sanitize(type, value) {
@@ -19,10 +18,16 @@ const INITIAL_VALUES = {
   content: "",
 };
 
-function FoodForm({ onSubmitSuccess }) {
-  const [values, setValues] = useState(INITIAL_VALUES);
+function FoodForm({
+  initialValues = INITIAL_VALUES,
+  initialPreview,
+  onSubmit,
+  onSubmitSuccess,
+  onCancel,
+}) {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submittingError, setSubmittingError] = useState(null);
+  const [values, setValues] = useState(initialValues);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -35,7 +40,7 @@ function FoodForm({ onSubmitSuccess }) {
     try {
       setSubmittingError(null);
       setIsSubmitting(true);
-      result = await createFood(formData);
+      result = await onSubmit(formData);
     } catch (error) {
       setSubmittingError(error);
       return;
@@ -43,8 +48,8 @@ function FoodForm({ onSubmitSuccess }) {
       setIsSubmitting(false);
     }
     const { food } = result;
+    setValues(initialValues);
     onSubmitSuccess(food);
-    setValues(INITIAL_VALUES);
   };
 
   const handleChange = (name, value) => {
@@ -63,6 +68,7 @@ function FoodForm({ onSubmitSuccess }) {
     <form onSubmit={handleSubmit}>
       <FileInput
         name="imgFile"
+        initialPreview={initialPreview}
         value={values.imgFile}
         onChange={handleChange}
       />
@@ -78,10 +84,15 @@ function FoodForm({ onSubmitSuccess }) {
         value={values.content}
         onChange={handleInputChange}
       />
-      <button disabled={isSubmitting} type="submit">
+      {onCancel && (
+        <button type="button" onClick={onCancel}>
+          취소
+        </button>
+      )}
+      <button type="submit" disabled={isSubmitting}>
         확인
       </button>
-      {submittingError && <div>{submittingError.message}</div>}
+      {submittingError && <p>{submittingError.message}</p>}
     </form>
   );
 }
