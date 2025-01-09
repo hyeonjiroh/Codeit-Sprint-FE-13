@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
+import "./FileInput.css";
 
-function FileInput({ name, value, initialPreview, onChange }) {
+function FileInput({ initialPreview, name, value, onChange }) {
   const [preview, setPreview] = useState(initialPreview);
   const inputRef = useRef();
 
@@ -30,7 +31,7 @@ function FileInput({ name, value, initialPreview, onChange }) {
 
   return (
     <div>
-      <img src={preview} alt="이미지 미리보기" />
+      <img className="FileInput-preview" src={preview} alt="이미지 미리보기" />
       <input type="file" onChange={handleChange} ref={inputRef} />
       {value && (
         <button type="button" onClick={handleClearClick}>
