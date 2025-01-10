@@ -37,6 +37,7 @@
   },
   "devDependencies": {
     "ajv": "^7.2.4",
-    "classnames": "^2.5.1"
+    "classnames": "^2.5.1",
+    "react-router-dom": "^6.28.1"
   }
 }
