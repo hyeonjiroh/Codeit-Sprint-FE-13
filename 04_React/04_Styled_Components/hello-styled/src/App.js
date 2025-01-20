@@ -1,9 +1,9 @@
-import Button from "./Button";
+import Input from "./Input";
 
 function App() {
   return (
     <div>
-      <Button>Hello Styled!</Button>
+      <Input />
     </div>
   );
 }
