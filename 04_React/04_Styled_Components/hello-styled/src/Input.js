@@ -13,9 +13,13 @@ const Input = styled.input`
   outline: none;
   padding: 16px;
 
-  &:focus {
-    border-color: ${({ error }) => (error ? `#f44336` : `#7760b4`)};
-  }
+  ${({ error }) =>
+    !error &&
+    `
+    &:focus {
+      border-color: #7760b4;
+    }
+  `}
 `;
 
 export default Input;
