@@ -1,10 +1,22 @@
-const current: [number, number] = [0, 0];
-const target: [number, number] = [4, 5];
-const dx: number = target[0] - current[0];
-const dy: number = target[1] - current[1];
-console.log(`오른쪽으로 ${dx} 위쪽으로 ${dy} 만큼 이동!`);
+let monster: {
+  name: string;
+  level: number;
+  hasGold?: boolean;
+  skills: string[];
+} = {
+  name: "고블린",
+  level: 22,
+  skills: ["태권도", "특공무술"],
+};
 
-const items: string[] = [];
-items.push("갑옷");
-items.push("빨간 물약");
-console.log(`${items.join(", ")}을/를 획득했다!`);
+console.log(
+  `${monster.name}의 레벨은 ${monster.level}이고,\n` +
+    `${
+      monster.hasGold ? "해치우면 골드를 얻는" : "해치워도 골드를 주지 않는"
+    } 몬스터입니다.\n` +
+    `${
+      monster.skills.length > 0
+        ? `가진 능력은 ${monster.skills.join(", ")}입니다.`
+        : ""
+    }`
+);
