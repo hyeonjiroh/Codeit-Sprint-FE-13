@@ -1,11 +1,18 @@
 "use strict";
-let monster = {
+function getDiff(fromPoint, toPoint) {
+    let dx = toPoint[0] - fromPoint[0];
+    let dy = toPoint[1] - fromPoint[1];
+    return [dx, dy];
+}
+const monster = {
     name: "고블린",
     level: 22,
     skills: ["태권도", "특공무술"],
+    move(fromPoint, toPoint) {
+        let [dx, dy] = getDiff(fromPoint, toPoint);
+        console.log(`오른쪽으로 ${dx} 위쪽으로 ${dy} 만큼 이동!`);
+    },
 };
-console.log(`${monster.name}의 레벨은 ${monster.level}이고,\n` +
-    `${monster.hasGold ? "해치우면 골드를 얻는" : "해치워도 골드를 주지 않는"} 몬스터입니다.\n` +
-    `${monster.skills.length > 0
-        ? `가진 능력은 ${monster.skills.join(", ")}입니다.`
-        : ""}`);
+const current = [0, 0];
+const target = [4, 5];
+monster.move(current, target);
