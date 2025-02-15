@@ -1,3 +1,5 @@
+type Point = [number, number];
+
 interface Entity {
   id: string;
   createdAt: Date;
@@ -9,25 +11,28 @@ interface Monster extends Entity {
   level: number;
   hasGold?: boolean;
   skills: string[];
+  move: (fromPoint: Point, toPoint: Point) => void;
 }
 
-let monster: Monster = {
+function getDiff(fromPoint: Point, toPoint: Point) {
+  let dx = toPoint[0] - fromPoint[0];
+  let dy = toPoint[1] - fromPoint[1];
+  return [dx, dy];
+}
+
+const monster: Monster = {
   id: "g001",
   name: "고블린",
   level: 22,
   skills: ["태권도", "특공무술"],
+  move(fromPoint, toPoint) {
+    let [dx, dy] = getDiff(fromPoint, toPoint);
+    console.log(`오른쪽으로 ${dx} 위쪽으로 ${dy} 만큼 이동!`);
+  },
   createdAt: new Date(),
   updatedAt: new Date(),
 };
 
-console.log(
-  `${monster.name}(${monster.id})의 레벨은 ${monster.level}이고,\n` +
-    `${
-      monster.hasGold ? "해치우면 골드를 얻는" : "해치워도 골드를 주지 않는"
-    } 몬스터입니다.\n` +
-    `${
-      monster.skills.length > 0
-        ? `가진 능력은 ${monster.skills.join(", ")}입니다.`
-        : ""
-    }`
-);
+const current: Point = [0, 0];
+const target: Point = [4, 5];
+monster.move(current, target);
