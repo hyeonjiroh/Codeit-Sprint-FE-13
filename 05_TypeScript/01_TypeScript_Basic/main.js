@@ -1,13 +1,15 @@
 "use strict";
-function printEquipment(equipment) {
-    console.log(`이름: ${equipment.name}`);
-    console.log(`이 장비는 공격력을 ${equipment.attack}, 방어력을 ${equipment.defence} 증가 시킵니다.`);
-}
-const item1 = {
-    id: "g001",
-    name: "서리불꽃 글러브",
-    price: 100,
-    attack: 5,
-    defence: 42,
+const itemTable = [
+    ["name", "이름"],
+    ["price", "가격"],
+    ["description", "설명"],
+];
+const item = {
+    id: "h001",
+    name: "힐링 포션",
+    price: 200,
+    description: "마시면 체력을 50 회복한다.",
 };
-printEquipment(item1);
+for (let [propertyKey, propertyName] of itemTable) {
+    console.log(`${propertyName} | ${item[propertyKey]}`);
+}
