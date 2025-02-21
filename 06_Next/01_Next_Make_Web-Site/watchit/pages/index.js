@@ -1,9 +1,11 @@
 import Link from "next/link";
+import SearchForm from "@/components/SearchForm";
 
 export default function Home() {
   return (
     <>
       <h1>watchit</h1>
+      <SearchForm />
       <ul>
         <li>
           <Link href="/movies/1">1번 영화</Link>
