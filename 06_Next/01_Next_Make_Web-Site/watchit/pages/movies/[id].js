@@ -1,3 +1,8 @@
+import { useRouter } from "next/router";
+
 export default function Movie() {
-  return <>Movie 페이지</>;
+  const router = useRouter();
+  const { id } = router.query;
+
+  return <>Movie 페이지 #{id}</>;
 }
