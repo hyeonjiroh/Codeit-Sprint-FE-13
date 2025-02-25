@@ -1,22 +1,31 @@
-import Link from "next/link";
+import { useEffect, useState } from "react";
+import MovieList from "@/components/MovieList";
 import SearchForm from "@/components/SearchForm";
+import styles from "@/styles/Home.module.css";
+import Header from "@/components/Header";
+import Container from "@/components/Container";
+import axios from "@/lib/axios";
 
 export default function Home() {
+  const [movies, setMovies] = useState([]);
+
+  async function getMovies() {
+    const res = await axios.get("/movies/");
+    const movies = res.data.results ?? [];
+    setMovies(movies);
+  }
+
+  useEffect(() => {
+    getMovies();
+  }, []);
+
   return (
     <>
-      <h1>watchit</h1>
-      <SearchForm />
-      <ul>
-        <li>
-          <Link href="/movies/1">1번 영화</Link>
-        </li>
-        <li>
-          <Link href="/movies/2">2번 영화</Link>
-        </li>
-        <li>
-          <Link href="/movies/3">3번 영화</Link>
-        </li>
-      </ul>
+      <Header />
+      <Container page>
+        <SearchForm />
+        <MovieList className={styles.movieList} movies={movies} />
+      </Container>
     </>
   );
 }
