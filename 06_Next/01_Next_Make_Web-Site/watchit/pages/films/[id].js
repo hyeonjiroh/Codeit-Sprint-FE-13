@@ -47,6 +47,7 @@ export default function Movie() {
       <Header />
       <Container page>
         <div className={styles.header}>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             className={styles.poster}
             src={movie.posterUrl}

@@ -1,14 +1,19 @@
-import Link from 'next/link';
-import styles from './MovieList.module.css';
-import StarRating from './StarRating';
+import Link from "next/link";
+import styles from "./MovieList.module.css";
+import StarRating from "./StarRating";
 
-export default function MovieList({ className = '', movies }) {
+export default function MovieList({ className = "", movies }) {
   return (
     <ul className={`${styles.movieList} ${className}`}>
       {movies.map((movie) => (
         <li key={movie.id}>
-          <Link href={`/movies/${movie.id}`}>
-            <img className={styles.poster} src={movie.posterUrl} alt={movie.title} />
+          <Link href={`/films/${movie.id}`}>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              className={styles.poster}
+              src={movie.posterUrl}
+              alt={movie.title}
+            />
           </Link>
           <div className={styles.info}>
             <h2 className={styles.title}>{movie.title}</h2>
