@@ -14,11 +14,6 @@
   position: relative;
 }
 
-.poster {
-  aspect-ratio: 27 / 40;
-  width: 350px;
-}
-
 .info {
   display: flex;
   flex-direction: column;

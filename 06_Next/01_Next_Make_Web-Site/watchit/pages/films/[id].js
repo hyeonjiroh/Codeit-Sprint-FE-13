@@ -1,9 +1,11 @@
+import Head from "next/head";
+import Image from "next/image";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
-import Image from "next/image";
 import MovieReviewList from "@/components/MovieReviewList";
 import styles from "@/styles/Movie.module.css";
 import axios from "@/lib/axios";
+import starImg from "@/public/star-filled.svg";
 
 const labels = {
   rating: {
@@ -43,14 +45,12 @@ export default function Movie() {
 
   return (
     <>
+      <Head>
+        <title>{movie.title} - watchit</title>
+      </Head>
       <div className={styles.header}>
         <div className={styles.posterContainer}>
-          <Image
-            className={styles.poster}
-            src={movie.posterUrl}
-            fill
-            alt={movie.name}
-          />
+          <Image fill src={movie.posterUrl} alt={movie.name} />
         </div>
         <div className={styles.info}>
           <div className={styles.englishTitle}>{movie.englishTitle}</div>
@@ -74,7 +74,10 @@ export default function Movie() {
               </tr>
               <tr>
                 <th>평점</th>{" "}
-                <td className={styles.starRating}>★{movie.starRating}</td>
+                <td className={styles.starRating}>
+                  <Image src={starImg} alt="★" />
+                  {movie.starRating}
+                </td>
               </tr>
             </tbody>
           </table>
