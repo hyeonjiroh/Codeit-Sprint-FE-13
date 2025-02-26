@@ -1,5 +1,5 @@
-import ButtonLink from "@/components/ButtonLink";
-import styles from "@/styles/NotFound.module.css";
+import ButtonLink from '@/components/ButtonLink';
+import styles from '@/styles/NotFound.module.css';
 
 export default function NotFound() {
   return (
