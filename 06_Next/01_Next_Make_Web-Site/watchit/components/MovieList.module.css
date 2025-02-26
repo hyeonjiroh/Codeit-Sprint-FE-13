@@ -10,6 +10,15 @@
   padding: 10px 20px;
 }
 
+.posterContainer {
+  display: block;
+  border-radius: 10px;
+  aspect-ratio: 27 / 40;
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+}
+
 .poster {
   display: block;
   border-radius: 10px;

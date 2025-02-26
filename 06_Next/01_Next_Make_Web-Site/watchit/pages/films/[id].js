@@ -1,15 +1,16 @@
-import { useEffect, useState } from 'react';
-import { useRouter } from 'next/router';
-import MovieReviewList from '@/components/MovieReviewList';
-import styles from '@/styles/Movie.module.css';
-import axios from '@/lib/axios';
+import { useEffect, useState } from "react";
+import { useRouter } from "next/router";
+import Image from "next/image";
+import MovieReviewList from "@/components/MovieReviewList";
+import styles from "@/styles/Movie.module.css";
+import axios from "@/lib/axios";
 
 const labels = {
   rating: {
-    12: '12세이상관람가',
-    15: '15세이상관람가',
-    19: '청소년관람불가',
-    all: '전체관람가',
+    12: "12세이상관람가",
+    15: "15세이상관람가",
+    19: "청소년관람불가",
+    all: "전체관람가",
   },
 };
 
@@ -17,7 +18,7 @@ export default function Movie() {
   const [movie, setMovie] = useState();
   const [movieReviews, setMovieReviews] = useState([]);
   const router = useRouter();
-  const id = router.query['id'];
+  const id = router.query["id"];
 
   async function loadMovie(targetId) {
     const res = await axios.get(`/movies/${targetId}`);
@@ -43,7 +44,14 @@ export default function Movie() {
   return (
     <>
       <div className={styles.header}>
-        <img className={styles.poster} src={movie.posterUrl} alt={movie.name} />
+        <div className={styles.posterContainer}>
+          <Image
+            className={styles.poster}
+            src={movie.posterUrl}
+            fill
+            alt={movie.name}
+          />
+        </div>
         <div className={styles.info}>
           <div className={styles.englishTitle}>{movie.englishTitle}</div>
           <h1 className={styles.title}>{movie.title}</h1>
@@ -65,7 +73,7 @@ export default function Movie() {
                 <th>러닝타임</th> <td>{movie.runningTime}분</td>
               </tr>
               <tr>
-                <th>평점</th>{' '}
+                <th>평점</th>{" "}
                 <td className={styles.starRating}>★{movie.starRating}</td>
               </tr>
             </tbody>

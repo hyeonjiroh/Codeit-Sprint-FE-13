@@ -1,10 +1,10 @@
-import Dropdown from "@/components/Dropdown";
-import { useTheme } from "@/lib/ThemeContext";
-import styles from "@/styles/Setting.module.css";
+import Dropdown from '@/components/Dropdown';
+import { useTheme } from '@/lib/ThemeContext';
+import styles from '@/styles/Setting.module.css';
 
 export default function Setting() {
   const { theme, setTheme } = useTheme();
-
+  
   function handleDropdownChange(name, value) {
     const nextTheme = value;
     setTheme(nextTheme);
@@ -20,8 +20,8 @@ export default function Setting() {
           name="theme"
           value={theme}
           options={[
-            { label: "다크", value: "dark" },
-            { label: "라이트", value: "light" },
+            { label: '다크', value: 'dark' },
+            { label: '라이트', value: 'light' },
           ]}
           onChange={handleDropdownChange}
         />
