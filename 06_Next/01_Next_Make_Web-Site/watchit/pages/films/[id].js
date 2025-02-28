@@ -1,7 +1,10 @@
+import { useState } from "react";
 import Head from "next/head";
 import Image from "next/image";
 import MovieReviewList from "@/components/MovieReviewList";
 import Spinner from "@/components/Spinner";
+import Dropdown from "@/components/Dropdown";
+import Button from "@/components/Button";
 import styles from "@/styles/Movie.module.css";
 import axios from "@/lib/axios";
 import starImg from "@/public/star-filled.svg";
@@ -44,7 +47,35 @@ export async function getServerSideProps(context) {
   };
 }
 
-export default function Movie({ movie, movieReviews }) {
+export default function Movie({ movie, movieReviews: initialMovieReviews }) {
+  const [movieReviews, setMovieReviews] = useState(initialMovieReviews);
+  const [formValue, setFormValue] = useState({
+    sex: "male",
+    age: 10,
+    starRating: 1,
+  });
+
+  async function handleSubmit(e) {
+    e.preventDefault();
+    const payload = {
+      ...formValue,
+      movieId: movie.id,
+    };
+    const res = await axios.post("/movie_reviews/", payload);
+    const newMovieReview = res.data;
+    setMovieReviews((prevMovieReviews) => [
+      newMovieReview,
+      ...prevMovieReviews,
+    ]);
+  }
+
+  function handleChange(name, value) {
+    setFormValue({
+      ...formValue,
+      [name]: value,
+    });
+  }
+
   if (!movie) {
     return (
       <div className={styles.loading}>
@@ -102,6 +133,54 @@ export default function Movie({ movie, movieReviews }) {
       <div className={styles.reviewSections}>
         <section>
           <h2 className={styles.sectionTitle}>내 리뷰 작성하기</h2>
+          <form className={styles.reviewForm} onSubmit={handleSubmit}>
+            <label className={styles.label}>
+              성별
+              <Dropdown
+                className={styles.dropdown}
+                name="sex"
+                value={formValue.sex}
+                options={[
+                  { label: "남성", value: "male" },
+                  { label: "여성", value: "female" },
+                ]}
+                onChange={handleChange}
+              />
+            </label>
+            <label className={styles.label}>
+              연령
+              <Dropdown
+                className={styles.dropdown}
+                name="age"
+                value={formValue.age}
+                options={[
+                  { label: "10대", value: 10 },
+                  { label: "20대", value: 20 },
+                  { label: "30대", value: 30 },
+                  { label: "40대", value: 40 },
+                  { label: "50대", value: 50 },
+                ]}
+                onChange={handleChange}
+              />
+            </label>
+            <label className={styles.label}>
+              별점
+              <Dropdown
+                className={styles.dropdown}
+                name="starRating"
+                value={formValue.starRating}
+                options={[
+                  { label: "★☆☆☆☆", value: 1 },
+                  { label: "★★☆☆☆", value: 2 },
+                  { label: "★★★☆☆", value: 3 },
+                  { label: "★★★★☆", value: 4 },
+                  { label: "★★★★★", value: 5 },
+                ]}
+                onChange={handleChange}
+              />
+            </label>
+            <Button className={styles.submit}>작성하기</Button>
+          </form>
         </section>
         <section>
           <h2 className={styles.sectionTitle}>리뷰</h2>

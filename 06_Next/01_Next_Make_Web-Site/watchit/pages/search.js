@@ -1,8 +1,8 @@
-import Head from "next/head";
-import MovieList from "@/components/MovieList";
-import SearchForm from "@/components/SearchForm";
-import styles from "@/styles/Search.module.css";
-import axios from "@/lib/axios";
+import Head from 'next/head';
+import MovieList from '@/components/MovieList';
+import SearchForm from '@/components/SearchForm';
+import styles from '@/styles/Search.module.css';
+import axios from '@/lib/axios';
 
 export async function getServerSideProps(context) {
   const { q } = context.query;
