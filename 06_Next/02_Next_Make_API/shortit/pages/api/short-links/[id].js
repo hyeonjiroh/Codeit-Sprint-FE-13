@@ -1,3 +1,3 @@
-export default function handler(request, response) {
-  response.send("Hello Dynamic Routes!");
+export default function handler(req, res) {
+  res.send(req.method);
 }
