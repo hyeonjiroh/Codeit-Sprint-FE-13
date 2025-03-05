@@ -1,12 +1,18 @@
 import dbConnect from "@/db/dbConnect";
-import mongoose from "mongoose";
+import QRCode from "@/db/models/QRCode";
 
 export default async function handler(req, res) {
   await dbConnect();
-  console.log(mongoose.connection.readyState);
 
   switch (req.method) {
+    case "POST":
+      res.status(201).send(req.body);
+      break;
+
     case "GET":
+      const props = Object.keys(QRCode.schema.paths);
+      console.log(props);
+
       res.send([
         {
           id: "abc",
@@ -24,10 +30,6 @@ export default async function handler(req, res) {
           url: "https://www.codeit.kr/community/questions",
         },
       ]);
-      break;
-
-    case "POST":
-      res.status(201).send(req.body);
       break;
 
     default:
