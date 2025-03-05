@@ -1,10 +1,10 @@
-import mongoose from "mongoose";
+import mongoose from 'mongoose';
 
 const shortLinkSchema = new mongoose.Schema(
   {
-    title: { type: String, default: "" },
-    url: { type: String, default: "" },
-    shortUrl: { type: String, default: "" },
+    title: { type: String, default: '' },
+    url: { type: String, default: '' },
+    shortUrl: { type: String, default: '' },
   },
   {
     timestamps: true,
@@ -12,6 +12,6 @@ const shortLinkSchema = new mongoose.Schema(
 );
 
 const ShortLink =
-  mongoose.models["ShortLink"] || mongoose.model("ShortLink", shortLinkSchema);
+  mongoose.models['ShortLink'] || mongoose.model('ShortLink', shortLinkSchema);
 
 export default ShortLink;
