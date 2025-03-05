@@ -1,18 +1,15 @@
-GET http://localhost:3000/api/qrcodes
-
-###
-
-GET http://localhost:3000/api/qrcodes/abc
-
-###
-
-PATCH http://localhost:3000/api/qrcodes/abc
+POST http://localhost:3000/api/short-links/
 Content-Type: application/json
 
 {
-  "title": "위키피디아 Next.js",
-  "url": "https://en.wikipedia.org/wiki/Next.js"
+    "title": "codeit",
+    "url": "https://codeit.kr"
 }
 
 ###
-DELETE http://localhost:3000/api/qrcodes/abc
+
+GET http://localhost:3000/api/short-links/67c835cfe67d3cd0bb5e1a0d
+
+###
+
+GET http://localhost:3000/api/short-links/
