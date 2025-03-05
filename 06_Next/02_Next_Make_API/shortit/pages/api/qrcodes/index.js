@@ -1,4 +1,10 @@
-export default function handler(req, res) {
+import dbConnect from "@/db/dbConnect";
+import mongoose from "mongoose";
+
+export default async function handler(req, res) {
+  await dbConnect();
+  console.log(mongoose.connection.readyState);
+
   switch (req.method) {
     case "GET":
       res.send([
@@ -21,10 +27,7 @@ export default function handler(req, res) {
       break;
 
     case "POST":
-      res.status(201).send({
-        title: "위키피디아 Next.js",
-        url: "https://en.wikipedia.org/wiki/Next.js",
-      });
+      res.status(201).send(req.body);
       break;
 
     default:

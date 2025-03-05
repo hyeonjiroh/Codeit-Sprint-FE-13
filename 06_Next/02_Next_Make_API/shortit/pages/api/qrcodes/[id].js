@@ -1,4 +1,4 @@
-export default function handler(req, res) {
+export default async function handler(req, res) {
   const { id } = req.query;
 
   switch (req.method) {
@@ -7,7 +7,10 @@ export default function handler(req, res) {
       break;
 
     case "PATCH":
-      res.send({ ...req.body, id });
+      res.send({
+        ...req.body,
+        id,
+      });
       break;
 
     case "DELETE":
