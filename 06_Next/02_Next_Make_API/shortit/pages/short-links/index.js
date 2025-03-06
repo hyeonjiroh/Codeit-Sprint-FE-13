@@ -1,12 +1,22 @@
-import Head from 'next/head';
-import ShortLinkList from '@/components/ShortLinkList';
-import Button from '@/components/Button';
-import Link from '@/components/Link';
-import styles from '@/styles/ShortLinkListPage.module.css';
+import Head from "next/head";
+import ShortLinkList from "@/components/ShortLinkList";
+import Button from "@/components/Button";
+import Link from "@/components/Link";
+import styles from "@/styles/ShortLinkListPage.module.css";
+import dbConnect from "@/db/dbConnect";
+import ShortLink from "@/db/models/ShortLink";
 
-export default function ShortLinkListPage() {
-  const shortLinks = [];
+export async function getServerSideProps() {
+  await dbConnect();
+  const shortLinks = await ShortLink.find();
+  return {
+    props: {
+      shortLinks: JSON.parse(JSON.stringify(shortLinks)),
+    },
+  };
+}
 
+export default function ShortLinkListPage({ shortLinks }) {
   return (
     <>
       <Head>
