@@ -1,15 +1,15 @@
-import ShortLinkForm from "@/components/ShortLinkForm";
-import styles from "@/styles/ShortLinkCreatePage.module.css";
-import axios from "@/lib/axios";
-import Head from "next/head";
-import { useRouter } from "next/router";
+import ShortLinkForm from '@/components/ShortLinkForm';
+import axios from '@/lib/axios';
+import styles from '@/styles/ShortLinkCreatePage.module.css';
+import Head from 'next/head';
+import { useRouter } from 'next/router';
 
 export default function ShortLinkCreatePage() {
   const router = useRouter();
-
+  
   async function handleSubmit(values) {
-    await axios.post("/short-links/", values);
-    router.push("/short-links");
+    await axios.post('/short-links/', values);
+    router.push('/short-links/');
   }
 
   return (

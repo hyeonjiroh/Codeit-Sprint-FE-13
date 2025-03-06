@@ -5,7 +5,6 @@ export async function getServerSideProps(context) {
   const { shortUrl } = context.query;
   await dbConnect();
   const shortLink = await ShortLink.findOne({ shortUrl });
-
   if (shortLink) {
     return {
       redirect: {

@@ -18,9 +18,11 @@ export default function Home() {
 
   async function handleCreate(e) {
     e.preventDefault();
-    const res = await axios.post("/short-links/", { title: url, url: url });
-    const newShortLink = res.data;
-    const newShortUrl = newShortLink.shortUrl;
+    const res = await axios.post("/short-links/", {
+      title: url,
+      url,
+    });
+    const newShortUrl = res.data.shortUrl;
     setShortUrl(newShortUrl);
   }
 
