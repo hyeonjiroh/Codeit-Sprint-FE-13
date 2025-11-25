@@ -38,11 +38,7 @@ function RegisterPage() {
     }
     const { name, email, password } = values;
     await axios.post("/users", { name, email, password });
-    await axios.post(
-      "/auth/login",
-      { email, password },
-      { withCredentials: true }
-    );
+    await axios.post("/auth/login", { email, password });
     navigate("/me");
   }
 
