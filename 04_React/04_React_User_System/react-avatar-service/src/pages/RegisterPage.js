@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import axios from "../lib/axios";
 import Label from "../components/Label";
 import Input from "../components/Input";
@@ -16,6 +17,7 @@ function RegisterPage() {
     password: "",
     passwordRepeat: "",
   });
+  const navigate = useNavigate();
   const toast = useToaster();
 
   function handleChange(e) {
@@ -35,11 +37,13 @@ function RegisterPage() {
       return;
     }
     const { name, email, password } = values;
-    await axios.post("/users", {
-      name,
-      email,
-      password,
-    });
+    await axios.post("/users", { name, email, password });
+    await axios.post(
+      "/auth/login",
+      { email, password },
+      { withCredentials: true }
+    );
+    navigate("/me");
   }
 
   return (
