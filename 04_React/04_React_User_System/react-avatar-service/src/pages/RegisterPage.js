@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Navigate, useNavigate } from "react-router-dom";
 import axios from "../lib/axios";
 import Label from "../components/Label";
 import Input from "../components/Input";
@@ -20,7 +20,7 @@ function RegisterPage() {
   });
   const toast = useToaster();
   const navigate = useNavigate();
-  const { login } = useAuth();
+  const { user, login } = useAuth();
 
   function handleChange(e) {
     const { name, value } = e.target;
@@ -42,6 +42,10 @@ function RegisterPage() {
     await axios.post("/users", { name, email, password });
     await login({ email, password });
     navigate("/me");
+  }
+
+  if (user) {
+    return <Navigate to="/me" />;
   }
 
   return (
@@ -90,7 +94,7 @@ function RegisterPage() {
           className={styles.Input}
           name="password"
           type="password"
-          placeholder="특수문자 포함, 16자 이상"
+          placeholder="비밀번호"
           value={values.password}
           onChange={handleChange}
         />

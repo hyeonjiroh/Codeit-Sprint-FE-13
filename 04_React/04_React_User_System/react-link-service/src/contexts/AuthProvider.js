@@ -1,20 +1,39 @@
-import axios from "../lib/axios";
 import { createContext, useContext, useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import axios from "../lib/axios";
 
 const AuthContext = createContext({
   user: null,
+  isPending: true,
   login: () => {},
   logout: () => {},
   updateMe: () => {},
 });
 
 export function AuthProvider({ children }) {
-  const [user, setUser] = useState(null);
+  const [values, setValues] = useState({
+    user: null,
+    isPending: true,
+  });
 
   async function getMe() {
-    const res = await axios.get("/users/me");
-    const nextUser = res.data;
-    setUser(nextUser);
+    setValues((prevValues) => ({
+      ...prevValues,
+      isPending: true,
+    }));
+
+    let nextUser;
+
+    try {
+      const res = await axios.get("/users/me");
+      nextUser = res.data;
+    } finally {
+      setValues((prevValues) => ({
+        ...prevValues,
+        user: nextUser,
+        isPending: false,
+      }));
+    }
   }
 
   async function login({ email, password }) {
@@ -32,7 +51,10 @@ export function AuthProvider({ children }) {
   async function updateMe(formData) {
     const res = await axios.patch("/users/me", formData);
     const nextUser = res.data;
-    setUser(nextUser);
+    setValues((prevValues) => ({
+      ...prevValues,
+      user: nextUser,
+    }));
   }
 
   // 사이트에 처음 접속했을 때 유저 데이터 받아오기
@@ -43,7 +65,8 @@ export function AuthProvider({ children }) {
   return (
     <AuthContext.Provider
       value={{
-        user,
+        user: values.user,
+        isPending: values.isPending,
         login,
         logout,
         updateMe,
@@ -54,10 +77,19 @@ export function AuthProvider({ children }) {
   );
 }
 
-export function useAuth() {
+export function useAuth(required) {
   const context = useContext(AuthContext);
+  const navigate = useNavigate();
+
   if (!context) {
     throw new Error("useAuth must be used within an AuthProvider");
   }
+
+  useEffect(() => {
+    if (required && !context.user && !context.isPending) {
+      navigate("/login");
+    }
+  }, [context.user, context.isPending, navigate, required]);
+
   return context;
 }

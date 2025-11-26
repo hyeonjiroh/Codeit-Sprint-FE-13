@@ -40,7 +40,7 @@ function AvatarProperties({
 }
 
 function AvatarEditPage() {
-  const { avatar: initialAvatar, updateAvatar } = useAuth();
+  const { avatar: initialAvatar, updateAvatar } = useAuth(true);
   const [avatar, setAvatar] = useState(null);
   const navigate = useNavigate();
 

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Navigate, useNavigate } from "react-router-dom";
 import Label from "../components/Label";
 import Input from "../components/Input";
 import Button from "../components/Button";
@@ -15,7 +15,7 @@ function LoginPage() {
     password: "",
   });
   const navigate = useNavigate();
-  const { login } = useAuth();
+  const { user, login } = useAuth();
 
   function handleChange(e) {
     const { name, value } = e.target;
@@ -31,6 +31,10 @@ function LoginPage() {
     const { email, password } = values;
     await login({ email, password });
     navigate("/me");
+  }
+
+  if (user) {
+    return <Navigate to="/me" />;
   }
 
   return (

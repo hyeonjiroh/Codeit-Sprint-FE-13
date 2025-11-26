@@ -14,7 +14,7 @@ import { useAuth } from "../contexts/AuthProvider";
 function MyPage() {
   const navigate = useNavigate();
   const toast = useToaster();
-  const { user, avatar } = useAuth();
+  const { user, avatar } = useAuth(true);
 
   function handleEditClick() {
     navigate("/me/edit");
