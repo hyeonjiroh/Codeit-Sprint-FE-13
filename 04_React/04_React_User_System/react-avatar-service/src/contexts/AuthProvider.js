@@ -52,7 +52,12 @@ export function AuthProvider({ children }) {
   }
 
   async function logout() {
-    // ...
+    await axios.delete("/auth/logout");
+    setValues((prevValues) => ({
+      ...prevValues,
+      user: null,
+      avatar: null,
+    }));
   }
 
   async function updateMe({ name, email }) {
